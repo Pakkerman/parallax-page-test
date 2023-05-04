@@ -1,92 +1,175 @@
-import { Parallax, ParallaxLayer, IParallax } from "@react-spring/parallax";
-import { NextPage } from "next/types";
-import { useRef } from "react";
+import {
+  SiNextdotjs,
+  SiPrisma,
+  SiReact,
+  SiTailwindcss,
+  SiTrpc,
+  SiTypescript,
+} from "react-icons/si"
+import { useScroll, animated, useSpring } from "@react-spring/web"
+import {
+  Parallax,
+  ParallaxLayer,
+  IParallax,
+  IParallaxLayer,
+} from "@react-spring/parallax"
+import { NextPage } from "next/types"
+import { useEffect, useRef } from "react"
+
+const ProjectView = () => {
+  return (
+    <div className="flex h-[100svh] w-full flex-col items-center justify-center">
+      <div className="h-[70%] w-[80%] rounded-xl border-2 border-slate-300"></div>
+      <div className="flex w-[80%] justify-center space-x-2 py-2 md:space-x-4">
+        <div className="flex h-16 w-16 flex-col items-center justify-center">
+          <SiReact size={36} />
+          <p className="text-sm">React</p>
+        </div>
+        <div className="flex h-16 w-16 flex-col items-center justify-center">
+          <SiNextdotjs size={36} />
+          <p className="text-sm">Next.js</p>
+        </div>
+        <div className="flex h-16 w-16 flex-col items-center justify-center">
+          <SiPrisma size={36} />
+          <p className="text-sm">Prisma</p>
+        </div>
+        <div className="flex h-16 w-16 flex-col items-center justify-center">
+          <SiTrpc size={36} />
+          <p className="text-sm">tRPC</p>
+        </div>
+        <div className="flex h-16 w-16 flex-col items-center justify-center">
+          <SiTailwindcss size={36} />
+          <p className="text-sm">Tailwind</p>
+        </div>
+        <div className="flex h-16 w-16 flex-col items-center justify-center">
+          <SiTypescript size={36} />
+          <p className="text-sm">TypeScript</p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const Home: NextPage = () => {
-  const parallax = useRef<IParallax>(null!);
+  const parallax = useRef<IParallax>(null!)
+  const layer = useRef<IParallaxLayer>(null!)
+
+  useEffect(() => {
+    parallax.current.scrollTo(2)
+  }, [])
 
   return (
-    <div className="h-full w-full bg-slate-800">
-      <Parallax ref={parallax} pages={4} className="bg-slate-800">
-        <ParallaxLayer speed={0.2} offset={0} factor={1} className="bg-red-500">
-          <div className="mx-4 flex h-[40%] flex-col justify-center">
-            <h1 className="text-right text-6xl">Pakkerman</h1>
-            <h1 className="text-right text-4xl">Web Developer</h1>
+    <div
+      className=""
+      onClick={() => layer.current.setHeight(0)} // Temp solution for things behind nav layer unclickable
+    >
+      <Parallax ref={parallax} pages={4} className="bg-slate-500">
+        {/* layout */}
+
+        <ParallaxLayer factor={4} className="">
+          <div className=""></div>
+        </ParallaxLayer>
+        <ParallaxLayer offset={1} className="">
+          <div className="flex h-full w-full flex-col items-center justify-center">
+            <p className="text-clip text-4xl">
+              is the more info and stuff here
+            </p>
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer offset={2} className=""></ParallaxLayer>
+        {/* content */}
+        <ParallaxLayer offset={0.5} speed={1} className="">
+          {" "}
+          <div className="px-2">
+            <h1 className="text-end text-6xl">Pakkerman</h1>
+            <h2 className="text-end text-4xl">Web Developer</h2>
           </div>
         </ParallaxLayer>
 
+        {/* nav */}
         <ParallaxLayer
-          speed={0.3}
-          offset={0.6}
-          factor={1}
-          className="bg-indigo-500"
+          ref={layer}
+          offset={0.8}
+          sticky={{ start: 0.8, end: 3 }}
+          speed={1}
+          className=""
         >
-          <h1 className="text-6xl">this is nav</h1>
+          <div className="flex h-16 w-full items-center justify-center space-x-3">
+            <div
+              onClick={() => parallax.current.scrollTo(0)}
+              className="cursor-pointer"
+            >
+              Pakkerman
+            </div>
+            <div
+              onClick={() => parallax.current.scrollTo(1)}
+              className="cursor-pointer"
+            >
+              About
+            </div>
+            <div
+              onClick={() => parallax.current.scrollTo(2)}
+              className="cursor-pointer"
+            >
+              Projects
+            </div>
+            <div
+              onClick={() => parallax.current.scrollTo(3)}
+              className="cursor-pointer"
+            >
+              Certificates
+            </div>
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer
+          ref={layer}
+          offset={2}
+          sticky={{ start: 2, end: 2.5 }}
+          speed={1}
+          className=""
+        >
+          <div className="flex h-32 w-full items-center justify-center space-x-3">
+            <div
+              onClick={() => parallax.current.scrollTo(0)}
+              className="cursor-pointer"
+            >
+              Birdapp
+            </div>
+            <div
+              onClick={() => parallax.current.scrollTo(1)}
+              className="cursor-pointer"
+            >
+              Hangman
+            </div>
+            <div
+              onClick={() => parallax.current.scrollTo(2)}
+              className="cursor-pointer"
+            >
+              Beatramid
+            </div>
+          </div>
+        </ParallaxLayer>
+        <ParallaxLayer offset={2} speed={1.5} className="">
+          <ProjectView />
         </ParallaxLayer>
 
-        <ParallaxLayer
-          speed={0.5}
-          offset={0.7}
-          factor={1}
-          className=" bg-orange-500"
-        >
-          <h1 className="text-6xl">3</h1>
+        <ParallaxLayer offset={3} speed={1} className="">
+          {" "}
+          <div className="px-2">
+            <h1 className="text-end text-6xl">Certificates</h1>
+          </div>
         </ParallaxLayer>
-        <ParallaxLayer
-          speed={0.7}
-          offset={0.8}
-          factor={1}
-          className="bg-zinc-500"
-        >
-          <h1 className="text-6xl">4</h1>
-        </ParallaxLayer>
-        <ParallaxLayer
-          speed={1}
-          offset={0.9}
-          factor={3.1}
-          className="bg-lime-500"
-        >
-          <h1 className="text-6xl"></h1>
-        </ParallaxLayer>
-        <ParallaxLayer
-          speed={0}
-          offset={0.9}
-          factor={3.1}
-          className="bg-lime-500"
-        >
-          <h1 className="text-6xl">this will be the main page</h1>
-        </ParallaxLayer>
-        <ParallaxLayer
-          offset={0}
-          className="w-full border-[1px] border-yellow-400"
-          onClick={() => parallax.current.scrollTo(1)}
-        >
-          marker1
-        </ParallaxLayer>
-        <ParallaxLayer
+        {/* page elements */}
+        {/* <ParallaxLayer
+          factor={0.05}
           offset={1}
-          className="w-full border-[1px] border-yellow-400"
-          onClick={() => parallax.current.scrollTo(2)}
-        >
-          marker2
-        </ParallaxLayer>
-        <ParallaxLayer
-          offset={2}
-          className="w-full border-[1px] border-yellow-400"
-          onClick={() => parallax.current.scrollTo(3)}
-        >
-          marker3
-        </ParallaxLayer>
-        <ParallaxLayer
-          offset={3}
-          className="w-full border-[1px] border-yellow-400"
-          onClick={() => parallax.current.scrollTo(0)}
-        >
-          marker4
-        </ParallaxLayer>
+          className="bg-slate-800 bg-opacity-40 backdrop-blur-md"
+          speed={0}
+        ></ParallaxLayer>
+        <ParallaxLayer></ParallaxLayer> */}
       </Parallax>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

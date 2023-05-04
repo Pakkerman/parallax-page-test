@@ -12,3 +12,25 @@ body {
   background-size: cover;
   background-image: url("https://images.unsplash.com/photo-1478059299873-f047d8c5fe1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
 }
+
+.preview {
+  /* @apply border-[0.5px] border-red-400   sm:border-blue-400 md:border-green-400Â lg:border-cyan-400; */
+  @apply bg-red-400 bg-opacity-30  sm:bg-blue-400 sm:bg-opacity-30 md:bg-green-400  md:bg-opacity-30 lg:bg-cyan-400 lg:bg-opacity-30;
+}
+
+.bg-a {
+  background: url("/bg-a.jpg");
+  background-size: 100%;
+}
+.bg-b {
+  background: url("/bg-b.jpg");
+  background-size: 100%;
+}
+.bg-c {
+  background-image: url("/bg-c.jpg");
+  background-size: 100%;
+}
+.bg-d {
+  background-image: url("/bg-d.jpg");
+  background-size: 100%;
+}
