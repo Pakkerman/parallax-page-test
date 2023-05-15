@@ -6,6 +6,11 @@
 
 body {
   font-family: "raleway";
+  @apply text-custom-beige;
+
+  /* background: url("/grain.svg");
+  background-size: auto 200vh;
+  height: 200vh; */
 }
 
 .bg-img-mountain {
@@ -18,19 +23,11 @@ body {
   @apply bg-red-400 bg-opacity-30  sm:bg-blue-400 sm:bg-opacity-30 md:bg-green-400  md:bg-opacity-30 lg:bg-cyan-400 lg:bg-opacity-30;
 }
 
-.bg-a {
-  background: url("/bg-a.jpg");
-  background-size: 100%;
+.bg-star {
+  background: url("/star.svg");
+  background-size: auto 100%;
 }
-.bg-b {
-  background: url("/bg-b.jpg");
-  background-size: 100%;
-}
-.bg-c {
-  background-image: url("/bg-c.jpg");
-  background-size: 100%;
-}
-.bg-d {
-  background-image: url("/bg-d.jpg");
-  background-size: 100%;
+
+.bg-fire {
+  background-color: #2c0709;
 }
